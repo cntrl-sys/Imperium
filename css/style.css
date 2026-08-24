@@ -1,0 +1,926 @@
+/* ============================================================
+   IMPERIVM — Design-System
+   Historisch, atmosphärisch, keine moderne SaaS-Optik.
+   ============================================================ */
+
+:root {
+    --bg-void: #0a0806;
+    --bg-panel: #17110c;
+    --bg-panel-light: #241a11;
+
+    --parchment: #d9c9a3;
+    --parchment-dim: #a8987a;
+
+    --brown: #8a6a3f;
+    --brown-dark: #4a3520;
+
+    --gold: #b8935a;
+    --gold-bright: #d9b878;
+
+    --ink: #120e0b;
+
+    --nation-color: #b8935a; /* wird pro Kontext überschrieben */
+
+    --font-display: "Cinzel", "Trajan Pro", Georgia, serif;
+    --font-body: "EB Garamond", Georgia, serif;
+
+    --ease-elegant: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-void);
+    color: var(--parchment);
+    font-family: var(--font-body);
+    overflow: hidden;
+}
+
+.app-root {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.screen {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+}
+
+.screen-fade-out .screen,
+.screen-fade-out {
+    opacity: 0;
+}
+
+.screen-fade-in {
+    animation: screenIn 0.4s var(--ease-elegant);
+}
+
+@keyframes screenIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+button {
+    font-family: var(--font-display);
+    cursor: pointer;
+}
+
+/* ============================================================
+   START SCREEN
+   ============================================================ */
+
+.start-screen {
+    background-color: var(--bg-void);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-menu {
+    position: relative;
+    margin-left: auto;
+    margin-right: 8vw;
+    padding: 3rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient(ellipse at center, rgba(20, 15, 10, 0.55) 0%, rgba(10, 8, 6, 0.25) 70%, transparent 100%);
+}
+
+.start-menu__title {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    color: var(--gold-bright);
+    text-shadow: 0 0 18px rgba(184, 147, 90, 0.35), 0 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 2.5rem;
+}
+
+.start-menu__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+.start-menu__item {
+    background: none;
+    border: none;
+    color: var(--brown);
+    font-size: 1.5rem;
+    letter-spacing: 0.12em;
+    padding: 0.85rem 1.5rem;
+    text-transform: uppercase;
+    transition: color 0.35s var(--ease-elegant), text-shadow 0.35s var(--ease-elegant), letter-spacing 0.35s var(--ease-elegant);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.start-menu__item:hover,
+.start-menu__item:focus-visible {
+    color: var(--gold-bright);
+    letter-spacing: 0.2em;
+    text-shadow: 0 0 14px rgba(217, 184, 120, 0.5), 0 2px 6px rgba(0, 0, 0, 0.9);
+    outline: none;
+}
+
+.start-menu__divider {
+    width: 220px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--brown) 50%, transparent);
+    opacity: 0.7;
+}
+
+.start-notice {
+    position: absolute;
+    bottom: 8vh;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(15, 11, 8, 0.85);
+    border: 1px solid var(--brown);
+    color: var(--parchment);
+    font-family: var(--font-body);
+    font-style: italic;
+    padding: 0.9rem 1.6rem;
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-elegant), transform 0.4s var(--ease-elegant);
+    max-width: 60vw;
+    text-align: center;
+}
+
+.start-notice--visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================================
+   SHARED SCREEN CHROME (Nation / Map)
+   ============================================================ */
+
+.screen-header {
+    padding: 2.2rem 3rem 1rem;
+    border-bottom: 1px solid rgba(138, 106, 63, 0.35);
+    background: linear-gradient(180deg, var(--bg-panel) 0%, var(--bg-void) 100%);
+}
+
+.screen-header h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.9rem;
+    letter-spacing: 0.08em;
+    color: var(--gold-bright);
+    margin: 0;
+}
+
+.screen-footer {
+    padding: 1.4rem 3rem;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid rgba(138, 106, 63, 0.35);
+    background: linear-gradient(0deg, var(--bg-panel) 0%, var(--bg-void) 100%);
+}
+
+.btn {
+    font-size: 1.1rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.75rem 2.2rem;
+    background: var(--bg-panel-light);
+    color: var(--parchment-dim);
+    border: 1px solid var(--brown);
+    transition: all 0.3s var(--ease-elegant);
+}
+
+.btn:hover:not(:disabled) {
+    color: var(--ink);
+    background: var(--gold);
+    border-color: var(--gold-bright);
+}
+
+.btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.btn--seal {
+    position: relative;
+    color: var(--gold-bright);
+    background: radial-gradient(circle at 30% 30%, var(--bg-panel-light), var(--ink));
+    border: 1px solid var(--gold);
+}
+
+.btn--seal:hover:not(:disabled) {
+    color: var(--ink);
+    background: radial-gradient(circle at 30% 30%, var(--gold-bright), var(--gold));
+}
+
+/* ============================================================
+   NATION SCREEN
+   ============================================================ */
+
+.nation-layout {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(260px, 320px) 1fr;
+    overflow: hidden;
+}
+
+.nation-list {
+    list-style: none;
+    margin: 0;
+    padding: 1.2rem 0;
+    overflow-y: auto;
+    border-right: 1px solid rgba(138, 106, 63, 0.35);
+    background: var(--bg-panel);
+}
+
+.nation-list__item {
+    --nation-color: var(--gold);
+    padding: 1rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    transition: background 0.25s var(--ease-elegant), border-color 0.25s var(--ease-elegant);
+}
+
+.nation-list__item:hover {
+    background: rgba(184, 147, 90, 0.08);
+}
+
+.nation-list__item--selected {
+    background: rgba(184, 147, 90, 0.12);
+    border-left-color: var(--nation-color);
+}
+
+.nation-list__name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--parchment);
+    letter-spacing: 0.03em;
+}
+
+.nation-list__item--selected .nation-list__name {
+    color: var(--nation-color);
+}
+
+.nation-list__leader {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--parchment-dim);
+}
+
+.nation-detail {
+    padding: 2.5rem 3rem;
+    overflow-y: auto;
+    display: flex;
+    gap: 2.5rem;
+    --nation-color: var(--gold);
+}
+
+.nation-detail[data-empty="true"] {
+    align-items: center;
+    justify-content: center;
+}
+
+.nation-detail__placeholder {
+    color: var(--parchment-dim);
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+.nation-detail__image-wrap {
+    flex: 0 0 240px;
+    border: 2px solid var(--nation-color);
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.6), 0 0 0 6px rgba(0,0,0,0.3) inset;
+    height: fit-content;
+    animation: detailReveal 0.5s var(--ease-elegant);
+}
+
+.nation-detail__image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.nation-detail__body {
+    flex: 1;
+    min-width: 0;
+    animation: detailReveal 0.5s var(--ease-elegant);
+}
+
+@keyframes detailReveal {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.nation-detail__name {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--nation-color);
+    margin: 0 0 0.3rem;
+    letter-spacing: 0.05em;
+}
+
+.nation-detail__leader {
+    font-style: italic;
+    color: var(--parchment-dim);
+    margin: 0 0 1.2rem;
+}
+
+.nation-detail__description {
+    line-height: 1.6;
+    font-size: 1.08rem;
+    margin: 0 0 1.6rem;
+    max-width: 60ch;
+}
+
+.nation-detail__abilities-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(138, 106, 63, 0.4);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.nation-detail__abilities {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.ability {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    border-left: 2px solid var(--nation-color);
+}
+
+.ability__name {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--parchment);
+    letter-spacing: 0.02em;
+}
+
+.ability__description {
+    font-size: 0.98rem;
+    color: var(--parchment-dim);
+}
+
+/* ============================================================
+   MAP SCREEN
+   ============================================================ */
+
+.map-screen {
+    background: var(--bg-void);
+}
+
+.map-grid {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2.5rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+}
+
+.map-tile {
+    position: relative;
+    padding: 0;
+    border: 1px solid var(--brown-dark);
+    background: var(--bg-panel);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    transition: border-color 0.3s var(--ease-elegant), transform 0.3s var(--ease-elegant), box-shadow 0.3s var(--ease-elegant);
+}
+
+.map-tile:hover {
+    border-color: var(--brown);
+    transform: translateY(-3px);
+}
+
+.map-tile--selected {
+    border-color: var(--gold-bright);
+    box-shadow: 0 0 0 2px rgba(217, 184, 120, 0.3), 0 8px 24px rgba(0, 0, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+.map-tile__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.85);
+}
+
+.map-tile__label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.7rem 1rem;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+    color: var(--parchment);
+    background: linear-gradient(0deg, rgba(10, 8, 6, 0.92) 0%, transparent 100%);
+    text-align: left;
+}
+
+/* ============================================================
+   GAME SCREEN (Platzhalter)
+   ============================================================ */
+
+.game-screen {
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(ellipse at center, rgba(20, 15, 10, 0.9) 0%, var(--bg-void) 75%);
+}
+
+/* Der aktive Game Screen (Runden-Strategiespiel) nutzt kein zentriertes
+   Platzhalter-Layout mehr, sondern absolut positionierte HUD-Elemente über
+   der scrollbaren Karte. */
+.game-screen--active {
+    justify-content: flex-start;
+    align-items: stretch;
+    background: var(--bg-void);
+    overflow: hidden;
+}
+
+.game-screen__panel {
+    text-align: center;
+    padding: 3rem 4rem;
+    border: 1px solid var(--nation-color);
+    background: rgba(15, 11, 8, 0.75);
+    max-width: 560px;
+}
+
+.game-screen__title {
+    font-family: var(--font-display);
+    color: var(--nation-color);
+    letter-spacing: 0.1em;
+    margin-top: 0;
+}
+
+.game-screen__summary {
+    margin: 1.6rem 0;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: 0.4rem 1.2rem;
+    text-align: left;
+}
+
+.game-screen__summary dt {
+    color: var(--parchment-dim);
+    font-style: italic;
+}
+
+.game-screen__summary dd {
+    margin: 0;
+    color: var(--parchment);
+    font-family: var(--font-display);
+}
+
+.game-screen__note {
+    color: var(--parchment-dim);
+    font-size: 0.95rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+    .nation-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        overflow-y: auto;
+    }
+    .nation-list {
+        border-right: none;
+        border-bottom: 1px solid rgba(138, 106, 63, 0.35);
+        max-height: 40vh;
+    }
+    .nation-detail {
+        flex-direction: column;
+    }
+    .nation-detail__image-wrap {
+        flex: none;
+        width: 60%;
+        margin: 0 auto;
+    }
+    .map-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .start-menu {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 560px) {
+    .map-grid {
+        grid-template-columns: 1fr;
+    }
+    .start-menu__title {
+        font-size: 1.8rem;
+    }
+    .start-menu__item {
+        font-size: 1.2rem;
+    }
+    .screen-header, .screen-footer {
+        padding: 1.2rem 1.4rem;
+    }
+    .nation-detail {
+        padding: 1.4rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* ============================================================
+   GAME SCREEN — echtes rundenbasiertes Strategiespiel
+   ============================================================ */
+
+/* ---- HUD oben ---- */
+
+.hud-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    gap: 2.4rem;
+    padding: 0.8rem 1.6rem;
+    background: linear-gradient(to bottom, rgba(10, 8, 6, 0.92), rgba(10, 8, 6, 0));
+    pointer-events: none;
+}
+
+.hud-top__stat {
+    font-family: var(--font-display);
+    letter-spacing: 0.08em;
+    color: var(--parchment);
+    font-size: 0.95rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.hud-top__stat--gold {
+    color: var(--gold-bright);
+}
+
+/* ---- Karten-Viewport (scrollbar) ---- */
+
+.map-viewport {
+    position: absolute;
+    inset: 0;
+    overflow: auto;
+    background: var(--bg-void);
+}
+
+.map-board {
+    position: relative;
+    background: #1c150e;
+}
+
+.tile-layer,
+.marker-layer,
+.highlight-layer,
+.unit-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.marker-layer,
+.highlight-layer,
+.unit-layer {
+    pointer-events: none;
+}
+
+.tile {
+    position: absolute;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.tile--land {
+    background: #5c4a2e;
+    background-image: linear-gradient(135deg, rgba(122, 99, 61, 0.35), rgba(66, 51, 30, 0.35));
+}
+
+.tile--water {
+    background: #1f3a45;
+    background-image: linear-gradient(135deg, rgba(56, 92, 107, 0.5), rgba(15, 30, 38, 0.5));
+}
+
+.tile:hover {
+    filter: brightness(1.15);
+}
+
+.tile-highlight {
+    position: absolute;
+    box-sizing: border-box;
+    border: 2px solid var(--gold-bright);
+    background: rgba(217, 184, 120, 0.22);
+}
+
+/* ---- Hauptstadt / Hafen Marker ---- */
+
+.structure-marker {
+    position: absolute;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    border: 2px solid var(--marker-color, var(--gold));
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.15));
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+.structure-marker--port {
+    font-size: 1.15rem;
+    border-style: dashed;
+}
+
+/* ---- Einheiten ---- */
+
+.unit {
+    position: absolute;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: left 0.25s var(--ease-elegant), top 0.25s var(--ease-elegant);
+}
+
+.unit__sprite {
+    width: 70%;
+    height: 70%;
+    background-size: auto;
+    image-rendering: pixelated;
+}
+
+.unit__sprite--fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--unit-color, var(--gold)), rgba(0, 0, 0, 0.55));
+    border: 2px solid var(--unit-color, var(--gold));
+    color: var(--ink);
+    width: 100%;
+    height: 100%;
+}
+
+.unit--selected .unit__sprite--fallback,
+.unit--selected .unit__sprite {
+    outline: 2px solid var(--gold-bright);
+    outline-offset: 2px;
+}
+
+.unit--spent {
+    opacity: 0.55;
+    filter: grayscale(0.4);
+}
+
+.unit__health {
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    bottom: -4px;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+.unit__health span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(to right, #7a1f1f, #b8935a);
+}
+
+/* ---- HUD unten: Einheiten-Button & Runde beenden ---- */
+
+.hud-bottom-left,
+.hud-bottom-right {
+    position: absolute;
+    bottom: 1.2rem;
+    z-index: 20;
+}
+
+.hud-bottom-left {
+    left: 1.2rem;
+}
+
+.hud-bottom-right {
+    right: 1.2rem;
+}
+
+.btn--hud {
+    padding: 0.7rem 1.6rem;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn--end-turn {
+    color: var(--gold-bright);
+    background: radial-gradient(circle at 30% 30%, var(--bg-panel-light), var(--ink));
+    border-color: var(--gold);
+}
+
+/* ---- Einheiten-Kaufmenü ---- */
+
+.units-panel {
+    position: absolute;
+    left: 50%;
+    bottom: 5rem;
+    transform: translateX(-50%);
+    z-index: 30;
+    width: min(680px, 92vw);
+    max-height: 60vh;
+    overflow-y: auto;
+    background: rgba(15, 11, 8, 0.96);
+    border: 1px solid var(--nation-color);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    padding: 1.2rem 1.4rem;
+}
+
+.units-panel__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+}
+
+.units-panel__header h2 {
+    font-family: var(--font-display);
+    color: var(--nation-color);
+    letter-spacing: 0.08em;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.units-panel__close {
+    background: none;
+    border: none;
+    color: var(--parchment-dim);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.units-panel__close:hover {
+    color: var(--gold-bright);
+}
+
+.units-panel__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.9rem;
+}
+
+.unit-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.9rem 0.7rem;
+    background: var(--bg-panel-light);
+    border: 1px solid var(--brown);
+    color: var(--parchment);
+    cursor: pointer;
+    transition: all 0.25s var(--ease-elegant);
+    text-align: center;
+}
+
+.unit-card:hover {
+    border-color: var(--gold-bright);
+    background: var(--bg-panel);
+}
+
+.unit-card--disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.unit-card__symbol {
+    font-size: 1.6rem;
+}
+
+.unit-card__name {
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+    color: var(--gold-bright);
+}
+
+.unit-card__traits {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+    color: var(--parchment-dim);
+}
+
+.unit-card__traits li {
+    line-height: 1.4;
+}
+
+.unit-card__cost {
+    margin-top: 0.3rem;
+    font-family: var(--font-display);
+    color: var(--gold);
+    font-size: 0.85rem;
+}
+
+/* ---- Meldungen ---- */
+
+.game-message {
+    position: absolute;
+    top: 4.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 40;
+    padding: 0.6rem 1.4rem;
+    background: rgba(15, 11, 8, 0.95);
+    border: 1px solid var(--gold);
+    color: var(--parchment);
+    font-size: 0.9rem;
+}
+
+/* ---- Sieg / Niederlage ---- */
+
+.game-over-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(5, 4, 3, 0.88);
+}
+
+/* Author-CSS mit "display: flex" gewinnt sonst gegen die UA-Regel für
+   [hidden] -> ohne diese Zeile wäre der Sieg/Niederlage-Screen immer
+   sichtbar, auch wenn das hidden-Attribut gesetzt ist. */
+.game-over-screen[hidden] {
+    display: none;
+}
+
+.game-over-screen__panel {
+    text-align: center;
+    padding: 3rem 4rem;
+    border: 1px solid var(--gold);
+    background: rgba(15, 11, 8, 0.9);
+}
+
+.game-over-screen__title {
+    font-family: var(--font-display);
+    letter-spacing: 0.14em;
+    font-size: 2.4rem;
+    margin: 0 0 1.6rem;
+}
+
+.game-over-screen--win .game-over-screen__title {
+    color: var(--gold-bright);
+}
+
+.game-over-screen--lose .game-over-screen__title {
+    color: #a83232;
+}

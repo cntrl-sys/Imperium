@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5c5c5c" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#1c1c1c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="#1c1c1c"/>
+  <rect width="800" height="600" fill="url(#m)"/>
+  <polygon points="0,420 150,340 320,400 480,300 650,380 800,320 800,600 0,600" fill="#1c1c1c" opacity="0.8"/>
+  <polygon points="0,480 200,430 420,470 620,410 800,450 800,600 0,600" fill="#1c1c1c"/>
+  <circle cx="400" cy="200" r="70" fill="#5c5c5c" opacity="0.25"/>
+  <text x="400" y="300" font-family="Georgia, serif" font-size="42" fill="#5c5c5c" text-anchor="middle" letter-spacing="2">Bergpass</text>
+</svg>
