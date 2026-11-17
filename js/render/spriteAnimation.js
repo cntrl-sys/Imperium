@@ -49,7 +49,7 @@ export function setDirection(unit, direction) {
 export function tickAnimation(unit, dtMs) {
     const anim = ensureAnimationState(unit);
     const duration = SPRITE_CONFIG.frameDurations[anim.state] || SPRITE_CONFIG.frameDurations.idle;
-    const frameCount = SPRITE_CONFIG.frameCounts[anim.state] || SPRITE_CONFIG.columns;
+    const frameCount = SPRITE_CONFIG.frameCounts[anim.state] || 1;
 
     anim.elapsed += dtMs;
     if (anim.elapsed < duration) return;

@@ -1,14 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520">
   <defs>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#2e5984" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#0f2233"/>
-    </linearGradient>
+    <linearGradient id="sea" x2="0" y2="1"><stop stop-color="#285d68"/><stop offset="1" stop-color="#102833"/></linearGradient>
+    <linearGradient id="land" x2="0" y2="1"><stop stop-color="#b5a66e"/><stop offset="1" stop-color="#52654a"/></linearGradient>
+    <pattern id="waves" width="66" height="38" patternUnits="userSpaceOnUse"><path d="M0 18q16-9 33 0t33 0M-16 36q16-9 33 0t33 0" fill="none" stroke="#c1ded0" stroke-opacity=".18" stroke-width="2"/></pattern>
+    <pattern id="hills" width="56" height="38" patternUnits="userSpaceOnUse"><path d="M-8 34q18-31 33 0m-8 0q18-28 34 0" fill="none" stroke="#e3d29a" stroke-opacity=".23" stroke-width="3"/></pattern>
   </defs>
-  <rect width="800" height="600" fill="#0f2233"/>
-  <rect width="800" height="600" fill="url(#m)"/>
-  <polygon points="0,420 150,340 320,400 480,300 650,380 800,320 800,600 0,600" fill="#0f2233" opacity="0.8"/>
-  <polygon points="0,480 200,430 420,470 620,410 800,450 800,600 0,600" fill="#0f2233"/>
-  <circle cx="400" cy="200" r="70" fill="#2e5984" opacity="0.25"/>
-  <text x="400" y="300" font-family="Georgia, serif" font-size="42" fill="#2e5984" text-anchor="middle" letter-spacing="2">Inselarchipel</text>
+  <rect width="800" height="520" fill="url(#sea)"/>
+  <rect width="800" height="520" fill="url(#waves)"/>
+  <g fill="url(#land)" stroke="#e0cd91" stroke-width="3">
+    <path d="M78 54q35-24 69-5t38 42q-12 34-46 36t-58-19q-22-24-3-54Z"/>
+    <path d="M355 38q40-22 74 1t31 42q-17 29-53 25t-59-23q-18-24 7-45Z"/>
+    <path d="M645 55q38-23 72 0t27 44q-16 29-52 26t-57-24q-17-25 10-46Z"/>
+    <path d="M87 227q36-25 72-3t29 44q-17 31-52 28t-55-24q-19-25 6-45Z"/>
+    <path d="M356 222q42-24 78-1t28 47q-18 30-55 27t-59-25q-18-25 8-48Z"/>
+    <path d="M640 229q38-24 73-1t29 45q-17 31-53 28t-56-25q-18-24 7-47Z"/>
+    <path d="M78 399q38-27 75-4t27 48q-17 31-54 28t-57-26q-19-25 9-46Z"/>
+    <path d="M356 406q41-24 77-1t28 46q-18 31-55 27t-58-24q-19-26 8-48Z"/>
+    <path d="M646 397q37-25 72-2t28 47q-17 30-53 27t-56-24q-17-27 9-48Z"/>
+  </g>
+  <g fill="url(#hills)" opacity=".72">
+    <ellipse cx="116" cy="78" rx="56" ry="39"/><ellipse cx="391" cy="59" rx="55" ry="36"/><ellipse cx="682" cy="77" rx="55" ry="38"/>
+    <ellipse cx="119" cy="250" rx="56" ry="38"/><ellipse cx="393" cy="247" rx="59" ry="38"/><ellipse cx="680" cy="251" rx="56" ry="39"/>
+    <ellipse cx="116" cy="423" rx="57" ry="39"/><ellipse cx="392" cy="429" rx="58" ry="38"/><ellipse cx="682" cy="421" rx="54" ry="39"/>
+  </g>
+  <g fill="#8e9b66" stroke="#c7bc88" stroke-width="2" opacity=".96">
+    <ellipse cx="222" cy="68" rx="17" ry="10"/><ellipse cx="278" cy="111" rx="12" ry="8"/><ellipse cx="505" cy="91" rx="15" ry="9"/><ellipse cx="559" cy="51" rx="11" ry="7"/>
+    <ellipse cx="224" cy="175" rx="14" ry="9"/><ellipse cx="300" cy="193" rx="11" ry="7"/><ellipse cx="495" cy="174" rx="18" ry="10"/><ellipse cx="568" cy="207" rx="12" ry="8"/>
+    <ellipse cx="48" cy="151" rx="13" ry="8"/><ellipse cx="744" cy="166" rx="15" ry="9"/><ellipse cx="267" cy="275" rx="16" ry="9"/><ellipse cx="535" cy="286" rx="13" ry="8"/>
+    <ellipse cx="222" cy="320" rx="18" ry="10"/><ellipse cx="300" cy="359" rx="12" ry="8"/><ellipse cx="505" cy="334" rx="16" ry="9"/><ellipse cx="577" cy="369" rx="11" ry="7"/>
+    <ellipse cx="42" cy="336" rx="14" ry="8"/><ellipse cx="750" cy="324" rx="17" ry="9"/><ellipse cx="222" cy="465" rx="15" ry="9"/><ellipse cx="296" cy="472" rx="11" ry="7"/>
+    <ellipse cx="504" cy="477" rx="17" ry="9"/><ellipse cx="568" cy="465" rx="12" ry="8"/><ellipse cx="52" cy="481" rx="12" ry="7"/><ellipse cx="754" cy="481" rx="14" ry="8"/>
+  </g>
+  <g fill="#e5c778"><circle cx="116" cy="78" r="4"/><circle cx="393" cy="247" r="4"/><circle cx="682" cy="421" r="4"/></g>
 </svg>

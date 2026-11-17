@@ -1,14 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <defs>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#b5651d" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#4a2c0e"/>
-    </linearGradient>
-  </defs>
-  <rect width="800" height="600" fill="#4a2c0e"/>
-  <rect width="800" height="600" fill="url(#m)"/>
-  <polygon points="0,420 150,340 320,400 480,300 650,380 800,320 800,600 0,600" fill="#4a2c0e" opacity="0.8"/>
-  <polygon points="0,480 200,430 420,470 620,410 800,450 800,600 0,600" fill="#4a2c0e"/>
-  <circle cx="400" cy="200" r="70" fill="#b5651d" opacity="0.25"/>
-  <text x="400" y="300" font-family="Georgia, serif" font-size="42" fill="#b5651d" text-anchor="middle" letter-spacing="2">Wuestenpfad</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520">
+  <defs><linearGradient id="sand" x2="0" y2="1"><stop stop-color="#c9a96b"/><stop offset="1" stop-color="#72583c"/></linearGradient><linearGradient id="sea" x2="0" y2="1"><stop stop-color="#24515a"/><stop offset="1" stop-color="#122b31"/></linearGradient><pattern id="dunes" width="160" height="85" patternUnits="userSpaceOnUse"><path d="M-20 70Q35 10 90 69t110 0M-20 88Q35 29 90 87t110 0" fill="none" stroke="#f0d393" stroke-opacity=".34" stroke-width="4"/></pattern><pattern id="waves" width="70" height="36" patternUnits="userSpaceOnUse"><path d="M0 18q18-9 36 0t36 0" fill="none" stroke="#a9c6b7" stroke-opacity=".2" stroke-width="2"/></pattern></defs>
+  <rect width="800" height="520" fill="url(#sea)"/><rect width="800" height="520" fill="url(#waves)"/>
+  <path d="M-20 40Q146 21 238 61t174 5q95-22 183 16t140 1l85 76-20 247q-78 44-153 24t-148 9q-82 32-162 0t-148 11q-85 29-143-17L-20 324Z" fill="url(#sand)" stroke="#e2c98b" stroke-width="5"/><path d="M-20 40Q146 21 238 61t174 5q95-22 183 16t140 1l85 76-20 247q-78 44-153 24t-148 9q-82 32-162 0t-148 11q-85 29-143-17L-20 324Z" fill="url(#dunes)"/>
+  <path d="M-10 320Q112 291 204 315t176-7q94-34 176 1t254-18" fill="none" stroke="#1a4650" stroke-width="43"/><path d="M-10 320Q112 291 204 315t176-7q94-34 176 1t254-18" fill="none" stroke="#86b9a7" stroke-opacity=".72" stroke-width="4"/>
+  <g fill="#466b46" stroke="#ddca8d" stroke-width="3"><ellipse cx="144" cy="175" rx="40" ry="20"/><ellipse cx="581" cy="223" rx="34" ry="17"/><ellipse cx="387" cy="115" rx="26" ry="13"/></g>
 </svg>

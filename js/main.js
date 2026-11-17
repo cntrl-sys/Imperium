@@ -8,6 +8,7 @@ import { renderStartScreen } from "./screens/startScreen.js";
 import { renderNationScreen } from "./screens/nationScreen.js";
 import { renderMapScreen } from "./screens/mapScreen.js";
 import { renderGameScreen } from "./screens/gameScreen.js";
+import { saveCurrentMatch } from "./game/savegame.js";
 
 registerScreen("start", renderStartScreen);
 registerScreen("nation", renderNationScreen);
@@ -15,6 +16,7 @@ registerScreen("map", renderMapScreen);
 registerScreen("game", renderGameScreen);
 
 document.addEventListener("DOMContentLoaded", () => {
+    window.addEventListener("pagehide", saveCurrentMatch);
     const root = document.getElementById("app");
     initGame(root);
 });

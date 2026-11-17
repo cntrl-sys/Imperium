@@ -1,6 +1,7 @@
 // js/screens/startScreen.js
 
-import { changeScreen } from "../game.js";
+import { changeScreen, gameState } from "../game.js";
+import { exportSavedGame, getSavedGame, importSavedGameText } from "../game/savegame.js";
 
 export function renderStartScreen(root) {
     const screen = document.createElement("div");
@@ -11,37 +12,58 @@ export function renderStartScreen(root) {
         <div class="start-menu">
             <div class="start-menu__title">IMPERIVM</div>
             <nav class="start-menu__list">
+                <button class="start-menu__item" data-action="continue-game">Spiel fortsetzen</button>
                 <button class="start-menu__item" data-action="new-game">Neues Spiel</button>
-                <div class="start-menu__divider"></div>
-                <button class="start-menu__item" data-action="load-game">Spiel laden</button>
-                <div class="start-menu__divider"></div>
-                <button class="start-menu__item" data-action="settings">Einstellungen</button>
+                <span class="start-menu__divider"></span>
+                <button class="start-menu__item start-menu__item--small" data-action="export-save">Spielstand exportieren</button>
+                <button class="start-menu__item start-menu__item--small" data-action="import-save">Spielstand importieren</button>
+                <input data-save-file type="file" accept=".json,application/json" hidden>
             </nav>
+            <p class="start-save-status" data-save-status aria-live="polite"></p>
         </div>
-        <div class="start-notice" hidden></div>
     `;
 
     root.appendChild(screen);
 
-    const notice = screen.querySelector(".start-notice");
+    const continueButton = screen.querySelector('[data-action="continue-game"]');
+    const exportButton = screen.querySelector('[data-action="export-save"]');
+    const saveStatus = screen.querySelector('[data-save-status]');
+    const fileInput = screen.querySelector('[data-save-file]');
+    const savedGame = getSavedGame();
+    continueButton.disabled = !savedGame;
+    exportButton.disabled = !savedGame;
+    if (savedGame) {
+        const date = new Date(savedGame.savedAt);
+        const elapsed = Math.floor(savedGame.match.elapsedSeconds || 0);
+        const time = `${String(Math.floor(elapsed / 60)).padStart(2, "0")}:${String(elapsed % 60).padStart(2, "0")}`;
+        saveStatus.textContent = `Automatisch gespeichert · Spielzeit ${time}${Number.isNaN(date.getTime()) ? "" : ` · ${date.toLocaleString("de-DE")}`}`;
+    }
+
+    continueButton.addEventListener("click", () => {
+        if (!getSavedGame()) return;
+        gameState.resumeSavedGame = true;
+        changeScreen("game");
+    });
+    exportButton.addEventListener("click", () => exportSavedGame());
+    screen.querySelector('[data-action="import-save"]').addEventListener("click", () => fileInput.click());
+    fileInput.addEventListener("change", async () => {
+        const file = fileInput.files?.[0];
+        if (!file) return;
+        let result;
+        try {
+            result = importSavedGameText(await file.text());
+        } catch {
+            result = { ok: false, reason: "Die ausgewählte Datei konnte nicht gelesen werden." };
+        }
+        saveStatus.textContent = result.ok ? "Spielstand importiert. Du kannst die Partie jetzt fortsetzen." : result.reason;
+        continueButton.disabled = !result.ok;
+        exportButton.disabled = !result.ok;
+        fileInput.value = "";
+    });
 
     screen.querySelector('[data-action="new-game"]').addEventListener("click", () => {
+        gameState.resumeSavedGame = false;
         changeScreen("nation");
     });
 
-    screen.querySelector('[data-action="load-game"]').addEventListener("click", () => {
-        showNotice(notice, "Spielstände werden in einem späteren Entwicklungsschritt verfügbar sein.");
-    });
-
-    screen.querySelector('[data-action="settings"]').addEventListener("click", () => {
-        showNotice(notice, "Die Einstellungen werden in einem späteren Entwicklungsschritt verfügbar sein.");
-    });
-}
-
-function showNotice(noticeEl, message) {
-    noticeEl.textContent = message;
-    noticeEl.hidden = false;
-    noticeEl.classList.remove("start-notice--visible");
-    void noticeEl.offsetWidth; // Reflow erzwingen, damit die Animation neu startet
-    noticeEl.classList.add("start-notice--visible");
 }

@@ -1,14 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <defs>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#5c5c5c" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#1c1c1c"/>
-    </linearGradient>
-  </defs>
-  <rect width="800" height="600" fill="#1c1c1c"/>
-  <rect width="800" height="600" fill="url(#m)"/>
-  <polygon points="0,420 150,340 320,400 480,300 650,380 800,320 800,600 0,600" fill="#1c1c1c" opacity="0.8"/>
-  <polygon points="0,480 200,430 420,470 620,410 800,450 800,600 0,600" fill="#1c1c1c"/>
-  <circle cx="400" cy="200" r="70" fill="#5c5c5c" opacity="0.25"/>
-  <text x="400" y="300" font-family="Georgia, serif" font-size="42" fill="#5c5c5c" text-anchor="middle" letter-spacing="2">Bergpass</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520">
+  <defs><linearGradient id="land" x2="0" y2="1"><stop stop-color="#909071"/><stop offset="1" stop-color="#48534b"/></linearGradient><linearGradient id="sea" x2="0" y2="1"><stop stop-color="#244650"/><stop offset="1" stop-color="#10252d"/></linearGradient><pattern id="contour" width="140" height="100" patternUnits="userSpaceOnUse"><path d="M-12 49q36-47 72-2t75-4M-20 73q46-35 82 1t86-6" fill="none" stroke="#d4c9a2" stroke-opacity=".27" stroke-width="3"/></pattern><pattern id="waves" width="70" height="38" patternUnits="userSpaceOnUse"><path d="M0 19q18-9 36 0t36 0" fill="none" stroke="#9cbbb4" stroke-opacity=".18" stroke-width="2"/></pattern></defs>
+  <rect width="800" height="520" fill="url(#sea)"/><rect width="800" height="520" fill="url(#waves)"/>
+  <path d="M0 0h800v520H0Z" fill="url(#land)"/><path d="M0 0h800v520H0Z" fill="url(#contour)"/>
+  <path d="M0 152Q122 191 233 162t182 20q80 42 150 6t150-3q58-2 85 35v99q-82-36-154-4t-154 5q-83-38-158-11T191 311q-94-42-191-15Z" fill="url(#sea)" stroke="#b6c2a2" stroke-width="5"/>
+  <path d="M0 152Q122 191 233 162t182 20q80 42 150 6t150-3q58-2 85 35v99q-82-36-154-4t-154 5q-83-38-158-11T191 311q-94-42-191-15Z" fill="url(#waves)"/>
+  <path d="M0 228q122 34 229 3t185 22q87 37 159-2t227 11" fill="none" stroke="#d6c291" stroke-width="16" stroke-dasharray="3 10"/>
+  <g fill="#2f443a"><path d="m97 125 38-64 38 64Z"/><path d="m585 417 51-87 52 87Z"/><path d="m673 132 30-51 31 51Z"/></g>
 </svg>

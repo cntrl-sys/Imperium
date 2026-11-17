@@ -1,14 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520">
   <defs>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#8a6a2f" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#3d2f14"/>
-    </linearGradient>
+    <linearGradient id="sea" x2="0" y2="1"><stop stop-color="#193b46"/><stop offset="1" stop-color="#0b2028"/></linearGradient>
+    <linearGradient id="land" x2="0" y2="1"><stop stop-color="#a9a16c"/><stop offset="1" stop-color="#626b49"/></linearGradient>
+    <pattern id="waves" width="72" height="38" patternUnits="userSpaceOnUse"><path d="M0 17q18-9 36 0t36 0M-18 33q18-9 36 0t36 0" fill="none" stroke="#8eb4a9" stroke-opacity=".17" stroke-width="2"/></pattern>
+    <pattern id="contours" width="150" height="120" patternUnits="userSpaceOnUse"><path d="M-20 55q34-56 79-10t96-13M-30 83q48-39 87 2t102-8M14 118q42-34 80-3" fill="none" stroke="#e2d39a" stroke-opacity=".2" stroke-width="2"/></pattern>
+    <filter id="shadow"><feGaussianBlur stdDeviation="9"/></filter>
   </defs>
-  <rect width="800" height="600" fill="#3d2f14"/>
-  <rect width="800" height="600" fill="url(#m)"/>
-  <polygon points="0,420 150,340 320,400 480,300 650,380 800,320 800,600 0,600" fill="#3d2f14" opacity="0.8"/>
-  <polygon points="0,480 200,430 420,470 620,410 800,450 800,600 0,600" fill="#3d2f14"/>
-  <circle cx="400" cy="200" r="70" fill="#8a6a2f" opacity="0.25"/>
-  <text x="400" y="300" font-family="Georgia, serif" font-size="42" fill="#8a6a2f" text-anchor="middle" letter-spacing="2">Goldene Ebene</text>
+  <rect width="800" height="520" fill="url(#sea)"/><rect width="800" height="520" fill="url(#waves)"/>
+  <path d="M-20 75Q80 38 174 59t137 8q81-17 132 18t104 0q111-33 176 28l96 85-43 74q-96 32-182 8t-139 22q-90 42-165 4t-148 28q-65 21-105-10L-20 253Z" fill="#06171b" opacity=".55" filter="url(#shadow)"/>
+  <path d="M-20 62Q70 28 161 50t142 9q76-16 125 18t108 2q111-34 177 25l92 82-45 72q-96 31-179 8t-139 22q-90 40-164 5t-151 27q-62 19-98-10L-20 236Z" fill="url(#land)" stroke="#d4bc7c" stroke-width="5"/>
+  <path d="M-20 62Q70 28 161 50t142 9q76-16 125 18t108 2q111-34 177 25l92 82-45 72q-96 31-179 8t-139 22q-90 40-164 5t-151 27q-62 19-98-10L-20 236Z" fill="url(#contours)"/>
+  <path d="M512 121q32-24 68-8t24 50q-17 29-58 27t-51-27q-8-22 17-42Z" fill="url(#sea)" stroke="#d4bc7c" stroke-opacity=".7" stroke-width="3"/>
+  <g fill="#ddc77f"><circle cx="166" cy="135" r="5"/><circle cx="619" cy="238" r="5"/><circle cx="352" cy="91" r="4"/></g>
 </svg>

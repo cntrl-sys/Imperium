@@ -1,14 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <defs>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#3b6b5c" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#122420"/>
-    </linearGradient>
-  </defs>
-  <rect width="800" height="600" fill="#122420"/>
-  <rect width="800" height="600" fill="url(#m)"/>
-  <polygon points="0,420 150,340 320,400 480,300 650,380 800,320 800,600 0,600" fill="#122420" opacity="0.8"/>
-  <polygon points="0,480 200,430 420,470 620,410 800,450 800,600 0,600" fill="#122420"/>
-  <circle cx="400" cy="200" r="70" fill="#3b6b5c" opacity="0.25"/>
-  <text x="400" y="300" font-family="Georgia, serif" font-size="42" fill="#3b6b5c" text-anchor="middle" letter-spacing="2">Flussdelta</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520">
+  <defs><linearGradient id="sea" x2="0" y2="1"><stop stop-color="#1d4550"/><stop offset="1" stop-color="#0d222b"/></linearGradient><linearGradient id="land" x2="0" y2="1"><stop stop-color="#9d9b67"/><stop offset="1" stop-color="#526247"/></linearGradient><pattern id="waves" width="72" height="38" patternUnits="userSpaceOnUse"><path d="M0 18q18-9 36 0t36 0" fill="none" stroke="#a8c9bb" stroke-opacity=".18" stroke-width="2"/></pattern><pattern id="fields" width="110" height="72" patternUnits="userSpaceOnUse"><path d="M0 17q30-24 60 0t60 0M-20 48q30-24 60 0t60 0" fill="none" stroke="#e0d194" stroke-opacity=".2" stroke-width="3"/></pattern></defs>
+  <rect width="800" height="520" fill="url(#sea)"/><rect width="800" height="520" fill="url(#waves)"/>
+  <path d="M-20 32Q94 11 166 56t128 12q86-24 149 13t116 10q118-22 184 24l73 85-34 180q-72 37-145 10t-147 0q-88 30-167-5t-146 8q-93 40-157 7L-20 280Z" fill="url(#land)" stroke="#d1c184" stroke-width="5"/>
+  <path d="M-20 32Q94 11 166 56t128 12q86-24 149 13t116 10q118-22 184 24l73 85-34 180q-72 37-145 10t-147 0q-88 30-167-5t-146 8q-93 40-157 7L-20 280Z" fill="url(#fields)"/>
+  <g fill="none" stroke-linecap="round"><path d="M386-20q-15 99 44 154t9 101q-42 48-111 91t-111 196" stroke="#10343f" stroke-width="48"/><path d="M427 145q109 2 172 61t222 37" stroke="#10343f" stroke-width="33"/><path d="M433 256q93-2 148 58t191 74" stroke="#10343f" stroke-width="31"/><path d="M386-20q-15 99 44 154t9 101q-42 48-111 91t-111 196" stroke="#79a9a3" stroke-opacity=".78" stroke-width="4"/><path d="M427 145q109 2 172 61t222 37M433 256q93-2 148 58t191 74" stroke="#79a9a3" stroke-opacity=".7" stroke-width="3"/></g>
+  <g fill="#d7c37e"><circle cx="174" cy="139" r="5"/><circle cx="584" cy="345" r="5"/><circle cx="264" cy="389" r="5"/></g>
 </svg>

@@ -1,14 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <defs>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#4a6b6f" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#152224"/>
-    </linearGradient>
-  </defs>
-  <rect width="800" height="600" fill="#152224"/>
-  <rect width="800" height="600" fill="url(#m)"/>
-  <polygon points="0,420 150,340 320,400 480,300 650,380 800,320 800,600 0,600" fill="#152224" opacity="0.8"/>
-  <polygon points="0,480 200,430 420,470 620,410 800,450 800,600 0,600" fill="#152224"/>
-  <circle cx="400" cy="200" r="70" fill="#4a6b6f" opacity="0.25"/>
-  <text x="400" y="300" font-family="Georgia, serif" font-size="42" fill="#4a6b6f" text-anchor="middle" letter-spacing="2">Nordmark</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520">
+  <defs><linearGradient id="sea" x2="0" y2="1"><stop stop-color="#173744"/><stop offset="1" stop-color="#101f25"/></linearGradient><linearGradient id="land" x2="0" y2="1"><stop stop-color="#68785e"/><stop offset="1" stop-color="#39483d"/></linearGradient><pattern id="waves" width="68" height="34" patternUnits="userSpaceOnUse"><path d="M0 15q17-8 34 0t34 0M-17 30q17-8 34 0t34 0" fill="none" stroke="#9bb9ae" stroke-opacity=".16" stroke-width="2"/></pattern><pattern id="grain" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M0 60 40 22l22 20 27-32M-12 83 25 48" fill="none" stroke="#cad0a0" stroke-opacity=".18" stroke-width="3"/></pattern></defs>
+  <rect width="800" height="520" fill="url(#sea)"/><rect width="800" height="520" fill="url(#waves)"/>
+  <path d="M-30 54 45 32l60 17 49-16 55 19 72-14 49 31 65-8 42 37 76-4 54 32 66-4 72 58 44 54-38 53-58 6-54 39-89-12-47 30-74-16-59 23-64-32-52 16-67-33-69 9-51-38-40 2-39-56Z" fill="url(#land)" stroke="#a9b38a" stroke-width="5"/>
+  <path d="M-30 54 45 32l60 17 49-16 55 19 72-14 49 31 65-8 42 37 76-4 54 32 66-4 72 58 44 54-38 53-58 6-54 39-89-12-47 30-74-16-59 23-64-32-52 16-67-33-69 9-51-38-40 2-39-56Z" fill="url(#grain)"/>
+  <path d="M-8 398Q148 359 249 319t135-86q88-65 153-103t138-89" fill="none" stroke="#102c39" stroke-width="47"/><path d="M-8 398Q148 359 249 319t135-86q88-65 153-103t138-89" fill="none" stroke="#6293a0" stroke-opacity=".7" stroke-width="4"/>
+  <path d="M60 118q31-45 63 0t63 0M512 343q31-45 63 0t63 0" fill="none" stroke="#d4c68d" stroke-opacity=".48" stroke-width="3"/>
 </svg>
