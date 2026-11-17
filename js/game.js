@@ -8,7 +8,9 @@
 export const gameState = {
     currentScreen: "start",
     selectedNationId: null,
-    selectedMapId: null
+    selectedMapId: null,
+    selectedOpponentCount: null,
+    resumeSavedGame: false
 };
 
 const screenRegistry = {};
@@ -61,6 +63,7 @@ export function selectNation(nationId) {
     gameState.selectedNationId = nationId;
 }
 
-export function selectMap(mapId) {
+export function selectMap(mapId, opponentCount = null) {
     gameState.selectedMapId = mapId;
+    gameState.selectedOpponentCount = opponentCount;
 }

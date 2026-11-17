@@ -107,11 +107,11 @@ export const nations = [
     {
         id: "england",
         name: "England",
-        leader: "Queen Elisabeth II.",
+        leader: "Boudicca",
         color: "#3B6B5C",
         image: "assets/lands/england-boudica.png",
         description:
-            "Angeführt von der kriegerischen Königin Elizabeth II. erhebt sich Britannien gegen " +
+            "Angeführt von der kriegerischen Königin Boudicca erhebt sich Britannien gegen " +
             "jede Fremdherrschaft. Zorn und Zusammenhalt sind seine größten Stärken.",
         abilities: [
             {

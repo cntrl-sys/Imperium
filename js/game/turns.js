@@ -1,33 +1,28 @@
 // js/game/turns.js
 //
-// Steuert den Rundenablauf: Spielerphase -> Botphase -> nächste Runde.
+// Liefert den regelmäßigen Einkommen- und Versorgungstakt fürs Echtzeitspiel.
 
-import { match, clearSelection } from "./gameState.js";
-import { resetActionsForNewTurn } from "./units.js";
-import { runBotTurn } from "../ai/bot.js";
+import { match } from "./gameState.js";
+import { collectWorkerResources } from "./units.js";
 import { isGameOver } from "./capitals.js";
+import { getRealmName, recordEvent } from "./events.js";
+import { getResearchBonus } from "./research.js";
 
-/**
- * Beendet die Spielerrunde, lässt den Bot handeln und startet die nächste
- * Runde. Gibt zurück, ob das Spiel danach vorbei ist.
- */
-export function endPlayerTurn() {
+const GOLD_PER_TURN = 25;
+
+// Resource and progression clock. The internal pulse drives AI recruitment
+// cadence and remains part of the existing save format.
+export function advanceRealtimeEconomy() {
     if (isGameOver()) return true;
-
-    clearSelection();
-    match.phase = "bot";
-
-    runBotTurn();
-
-    if (isGameOver()) {
-        return true;
-    }
-
-    match.phase = "player";
     match.turn += 1;
-    resetActionsForNewTurn("player");
-    resetActionsForNewTurn("bot");
-    clearSelection();
-
+    match.players.forEach((player) => {
+        player.resources.gold += (player.goldPerTurn || GOLD_PER_TURN) + getResearchBonus(player.id, "goldPerTurn");
+    });
+    const harvested = collectWorkerResources();
+    for (const item of harvested) {
+        const labels = { gold: "Gold", wheat: "Getreide", wood: "Holz", stone: "Stein" };
+        recordEvent(`${getRealmName(item.owner)} sammelt ${item.amount} ${labels[item.resource] || item.resource}.`, "economy");
+    }
+    recordEvent(`Einkommen und Versorgung treffen ein.`, "economy");
     return false;
 }
